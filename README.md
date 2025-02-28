@@ -1,5 +1,6 @@
 # CNN Digits
-A simple model trained on handwritten and font digits, 0-9. The dataset is a modified public dataset from Kaggle: https://www.kaggle.com/datasets/pintowar/numerical-images
+A simple model trained on handwritten and font digits, 0-9. The dataset is a modified public dataset from Kaggle: https://www.kaggle.com/datasets/pintowar/numerical-images.
+A React application was made for using the models trained created with the notebook. The source for the React portion can be found in the [react](https://github.com/EdanEA/cnn-digits/tree/react) branch. A deployed version of the React application is also at https://edanea.github.io/cnn-digits.
 
 ## Usage
 1. `git clone https://github.com/EdanEA/cnn-digits.git`
