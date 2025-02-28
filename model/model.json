@@ -83,6 +83,22 @@
             }
           },
           {
+            "class_name": "Dropout",
+            "config": {
+              "name": "dropout",
+              "trainable": true,
+              "dtype": {
+                "module": "keras",
+                "class_name": "DTypePolicy",
+                "config": { "name": "float32" },
+                "registered_name": null
+              },
+              "rate": 0.2,
+              "seed": null,
+              "noise_shape": null
+            }
+          },
+          {
             "class_name": "Conv2D",
             "config": {
               "name": "conv2d_1",
@@ -93,7 +109,7 @@
                 "config": { "name": "float32" },
                 "registered_name": null
               },
-              "filters": 32,
+              "filters": 64,
               "kernel_size": [3, 3],
               "strides": [1, 1],
               "padding": "valid",
@@ -136,6 +152,22 @@
               "padding": "valid",
               "strides": [2, 2],
               "data_format": "channels_last"
+            }
+          },
+          {
+            "class_name": "Dropout",
+            "config": {
+              "name": "dropout_1",
+              "trainable": true,
+              "dtype": {
+                "module": "keras",
+                "class_name": "DTypePolicy",
+                "config": { "name": "float32" },
+                "registered_name": null
+              },
+              "rate": 0.2,
+              "seed": null,
+              "noise_shape": null
             }
           },
           {
@@ -196,7 +228,7 @@
                 "registered_name": null
               },
               "units": 10,
-              "activation": "sigmoid",
+              "activation": "softmax",
               "use_bias": true,
               "kernel_initializer": {
                 "module": "keras.initializers",
@@ -221,9 +253,43 @@
       }
     },
     "training_config": {
-      "loss": "binary_crossentropy",
+      "loss": {
+        "class_name": "CategoricalCrossentropy",
+        "config": {
+          "name": "categorical_crossentropy",
+          "reduction": "sum_over_batch_size",
+          "from_logits": false,
+          "label_smoothing": 0.0,
+          "axis": -1
+        }
+      },
       "loss_weights": null,
-      "metrics": ["accuracy"],
+      "metrics": [
+        {
+          "class_name": "CategoricalAccuracy",
+          "config": { "name": "categorical_accuracy", "dtype": "float32" }
+        },
+        {
+          "class_name": "Precision",
+          "config": {
+            "name": "precision",
+            "dtype": "float32",
+            "thresholds": null,
+            "top_k": null,
+            "class_id": null
+          }
+        },
+        {
+          "class_name": "Recall",
+          "config": {
+            "name": "recall",
+            "dtype": "float32",
+            "thresholds": null,
+            "top_k": null,
+            "class_id": null
+          }
+        }
+      ],
       "weighted_metrics": null,
       "run_eagerly": false,
       "steps_per_execution": 1,
@@ -233,7 +299,7 @@
         "config": {
           "name": "adam",
           "learning_rate": 0.0010000000474974513,
-          "weight_decay": null,
+          "weight_decay": 0.01,
           "clipnorm": null,
           "global_clipnorm": null,
           "clipvalue": null,
@@ -252,7 +318,7 @@
   },
   "weightsManifest": [
     {
-      "paths": ["group1-shard1of1.bin"],
+      "paths": ["group1-shard1of2.bin", "group1-shard2of2.bin"],
       "weights": [
         {
           "name": "conv2d/kernel",
@@ -262,17 +328,17 @@
         { "name": "conv2d/bias", "shape": [32], "dtype": "float32" },
         {
           "name": "conv2d_1/kernel",
-          "shape": [3, 3, 32, 32],
+          "shape": [3, 3, 32, 64],
           "dtype": "float32"
         },
         {
           "name": "conv2d_1/bias",
-          "shape": [32],
+          "shape": [64],
           "dtype": "float32"
         },
         {
           "name": "dense/kernel",
-          "shape": [6272, 128],
+          "shape": [12544, 128],
           "dtype": "float32"
         },
         { "name": "dense/bias", "shape": [128], "dtype": "float32" },

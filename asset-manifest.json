@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/cnn-digits/static/css/main.e6f7116c.css",
-    "main.js": "/cnn-digits/static/js/main.ab820dcc.js",
+    "main.css": "/cnn-digits/static/css/main.8ae9fad8.css",
+    "main.js": "/cnn-digits/static/js/main.de332387.js",
     "index.html": "/cnn-digits/index.html",
-    "main.e6f7116c.css.map": "/cnn-digits/static/css/main.e6f7116c.css.map",
-    "main.ab820dcc.js.map": "/cnn-digits/static/js/main.ab820dcc.js.map"
+    "main.8ae9fad8.css.map": "/cnn-digits/static/css/main.8ae9fad8.css.map",
+    "main.de332387.js.map": "/cnn-digits/static/js/main.de332387.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6f7116c.css",
-    "static/js/main.ab820dcc.js"
+    "static/css/main.8ae9fad8.css",
+    "static/js/main.de332387.js"
   ]
 }
